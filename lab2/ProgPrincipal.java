@@ -128,7 +128,7 @@ public class ProgPrincipal {
 		ing.addAlumno(a6);
 		
 		//Ejer. 1) mostrar notas totales de los alumnos
-
+		ing.mostrarNotasTotales();
 		
 		//Ejer. 2) obtener la lista de los alumnos suspendidos
 		//Codigo que podeis usar para comprobar que la lista obtenida es correcta:
