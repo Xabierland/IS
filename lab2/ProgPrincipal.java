@@ -126,32 +126,40 @@ public class ProgPrincipal {
 		ing.addAlumno(a4);
 		ing.addAlumno(a5);
 		ing.addAlumno(a6);
-		
+
+		int index=1;
+		System.out.println("===EJERCICIO "+index+"==="); index++;
 		//Ejer. 1) mostrar notas totales de los alumnos
 		ing.mostrarNotasTotales();
-		
+
+		System.out.println("===EJERCICIO "+index+"==="); index++;
 		//Ejer. 2) obtener la lista de los alumnos suspendidos
 		//Codigo que podeis usar para comprobar que la lista obtenida es correcta:
-		//l.stream().forEach(System.out::println);
+		ing.obtenerAlumnosSuspendidos().stream().forEach(System.out::println);
 
-		
+		System.out.println("===EJERCICIO "+index+"==="); index++;
 		//Ejer. 3) obtener la lista de los alumnos que han aprobado ordenados por su nombre 
+		ing.obtenerAlumnosAprobadosOrdenadosNombre().stream().forEach(System.out::println);
 
-		
+		System.out.println("===EJERCICIO "+index+"==="); index++;
 		//Ejer. 4) obtener la lista de los alumnos que han aprobado ordenados por su nombre y luego por su apellido
+		ing.obtenerAlumnosAprobadosOrdenadosNombreApellido().stream().forEach(System.out::println);
 
-		
+		System.out.println("===EJERCICIO "+index+"==="); index++;
 		//Ejer. 5) obtener el porcentaje de aprobados de la asignatura
-		
-		
+		System.out.println(ing.obtenerPorcentajeAprobados());
+
+		System.out.println("===EJERCICIO "+index+"==="); index++;
 		//Ejer. 6) obtener la lista de los paises representados en clase
+		ing.obtenerPaisesRepresentados().stream().forEach(System.out::println);
 
-				
+		System.out.println("===EJERCICIO "+index+"==="); index++;
 		//Ejer. 7) obtener la lista de alumnos que han aprobado todos los entregables
+		ing.obtenerAlumnosTodosEntregablesAprobados().stream().forEach(System.out::println);
 
-		
+		System.out.println("===EJERCICIO "+index+"==="); //index++;
 		//Ejer. 8) obtener la lista de alumnos que hayan obtenido en algun entregable una nota superior a la nota introducida
-
+		ing.obtenerAlumnosQueSuperanNotasEnEntregable().stream().forEach(System.out::println);
 		
 		//Ejer. 9) obtener un mapa con los alumnos aprobados y suspendidos
 		

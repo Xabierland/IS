@@ -35,28 +35,41 @@ public class IngenieriaSoftware {
 	
 	public void mostrarNotasTotales()
 	{
-		Iterator<Alumno> it = obtIterador();
-		
-		while(it.hasNext())
-		{
-			System.out.println(it.next().calcularNotaFinal());
-		}
+		lMatriculados.stream().mapToDouble(Alumno::calcularNotaFinalJava8).forEach(System.out::println);
 	}
 	
 	public List<Alumno> obtenerAlumnosSuspendidos()
 	{
-		List<Alumno>  alumnosSuspendidos = new ArrayList<>();
-		
-		Iterator<Alumno> it = obtIterador();
-		while(it.hasNext())
-		{
-			Alumno al = it.next();
-			if(al.haSuspendido())
-			{
-				alumnosSuspendidos.add(al);
-			}
-		}		
-		return alumnosSuspendidos;
-	}	
+		return lMatriculados.stream().filter(Alumno::haSuspendido).collect(Collectors.toList());
+	}
 
+	public List<Alumno> obtenerAlumnosAprobadosOrdenadosNombre()
+	{
+		return lMatriculados.stream().filter(p -> !p.haSuspendido()).sorted(Comparator.comparing(Alumno::getNombre)).collect(Collectors.toList());
+	}
+
+	public List<Alumno> obtenerAlumnosAprobadosOrdenadosNombreApellido()
+	{
+		return lMatriculados.stream().filter(p -> !p.haSuspendido()).sorted(Comparator.comparing(Alumno::getNombre).thenComparing(Alumno::getApellido)).collect(Collectors.toList());
+	}
+
+	public double obtenerPorcentajeAprobados()
+	{
+		return lMatriculados.stream().filter(p -> !p.haSuspendido()).count()/(double)lMatriculados.size();
+	}
+
+	public List<String> obtenerPaisesRepresentados()
+	{
+		return lMatriculados.stream().map(Alumno::getPais).distinct().collect(Collectors.toList());
+	}
+
+	public List<Alumno> obtenerAlumnosTodosEntregablesAprobados()
+	{
+		return lMatriculados.stream().filter(Alumno::todosEntregablesAprobados).collect(Collectors.toList());
+	}
+
+	public List<Alumno> obtenerAlumnosQueSuperanNotasEnEntregable()
+	{
+		return lMatriculados.stream().filter(Alumno::superaNotaEnEntregable).collect(Collectors.toList());
+	}
 }

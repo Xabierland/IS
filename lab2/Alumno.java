@@ -47,7 +47,7 @@ public class Alumno {
 	}
 	
 	public boolean haSuspendido() {
-		return calcularNotaFinal()<5;  
+		return calcularNotaFinalJava8()<5;
 	}
 	
 	public String toString()
@@ -55,34 +55,31 @@ public class Alumno {
 		return "nombre: " + nombre + " " + apellido + ", mail:" + mail; 
 	}
 	
-	////////////////////////////JAVA7////////////////////////////////
+	////////////////////////////JAVA8////////////////////////////////
 	private Iterator<Entregable> obtIterador()
 	{
 		return lEntregables.iterator();
 	}
 	
 	//Debereis modificarlo y usar las herramientas que nos proporciona Java8
-	public double calcularAcumuladoEntregables()
+	public double calcularNotaEntregableJava8()
 	{
-		double nota = 0;
-		
-		Iterator<Entregable> it = obtIterador();
-		while(it.hasNext())
-		{
-			nota = nota + it.next().getNota();
-		}
-		return nota;
+		return lEntregables.stream().mapToDouble(Entregable::getNota).average().orElse(0.0);
 	}
 	
 	//Debereis modificarlo y usar las herramientas que nos proporciona Java8
-	public double calcularNotaFinal()
+	public double calcularNotaFinalJava8()
 	{
-		double notaFinal = 0;		
-		
-		notaFinal = calcularAcumuladoEntregables()/lEntregables.size();
-		notaFinal = notaFinal*0.6 + notaExamen*0.4;		
-		
-		return notaFinal;
-	}	
-	
+		return calcularNotaEntregableJava8()*0.6+notaExamen*0.4;
+	}
+
+	public boolean todosEntregablesAprobados()
+	{
+		return lEntregables.stream().allMatch(p -> p.getNota()>=5);
+	}
+
+	public boolean superaNotaEnEntregable()
+	{
+		return lEntregables.stream().anyMatch(p -> p.getNota()>=8);
+	}
 }
