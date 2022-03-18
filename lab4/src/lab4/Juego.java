@@ -54,15 +54,10 @@ public class Juego extends JFrame {
 		casilla.setOpaque(true);
 		casilla.setBackground(Color.DARK_GRAY);
 		casilla.addMouseListener(new MouseAdapter() {
-			@Override
+			@Override 
 			public void mouseClicked(MouseEvent e) 
 			{
-				//if(casilla.getColorModel()==Color.DARK_GRAY)
-				{
-					
-				}
-				
-				
+				casilla.setBackground(Color.red);
 			}
 		});
 		return casilla;
