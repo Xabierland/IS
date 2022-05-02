@@ -128,59 +128,68 @@ public class ProgPrincipal {
 		ing.addAlumno(a6);
 
 		int index=1;
-		System.out.println("===EJERCICIO "+index+"==="); index++;
+
+		System.out.println("\n===EJERCICIO "+ index++ +"===");
 		//Ejer. 1) mostrar notas totales de los alumnos
 		ing.mostrarNotasTotales();
 
-		System.out.println("===EJERCICIO "+index+"==="); index++;
+		System.out.println("\n===EJERCICIO "+ index++ +"===");
 		//Ejer. 2) obtener la lista de los alumnos suspendidos
 		//Codigo que podeis usar para comprobar que la lista obtenida es correcta:
 		ing.obtenerAlumnosSuspendidos().stream().forEach(System.out::println);
 
-		System.out.println("===EJERCICIO "+index+"==="); index++;
+		System.out.println("\n===EJERCICIO "+ index++ +"===");
 		//Ejer. 3) obtener la lista de los alumnos que han aprobado ordenados por su nombre 
 		ing.obtenerAlumnosAprobadosOrdenadosNombre().stream().forEach(System.out::println);
 
-		System.out.println("===EJERCICIO "+index+"==="); index++;
+		System.out.println("\n===EJERCICIO "+ index++ +"===");
 		//Ejer. 4) obtener la lista de los alumnos que han aprobado ordenados por su nombre y luego por su apellido
 		ing.obtenerAlumnosAprobadosOrdenadosNombreApellido().stream().forEach(System.out::println);
 
-		System.out.println("===EJERCICIO "+index+"==="); index++;
+		System.out.println("\n===EJERCICIO "+ index++ +"===");
 		//Ejer. 5) obtener el porcentaje de aprobados de la asignatura
 		System.out.println(ing.obtenerPorcentajeAprobados());
 
-		System.out.println("===EJERCICIO "+index+"==="); index++;
+		System.out.println("\n===EJERCICIO "+ index++ +"===");
 		//Ejer. 6) obtener la lista de los paises representados en clase
 		ing.obtenerPaisesRepresentados().stream().forEach(System.out::println);
 
-		System.out.println("===EJERCICIO "+index+"==="); index++;
+		System.out.println("\n===EJERCICIO "+ index++ +"===");
 		//Ejer. 7) obtener la lista de alumnos que han aprobado todos los entregables
 		ing.obtenerAlumnosTodosEntregablesAprobados().stream().forEach(System.out::println);
 
-		System.out.println("===EJERCICIO "+index+"==="); //index++;
+		System.out.println("\n===EJERCICIO "+ index++ +"===");
 		//Ejer. 8) obtener la lista de alumnos que hayan obtenido en algun entregable una nota superior a la nota introducida
 		ing.obtenerAlumnosQueSuperanNotasEnEntregable().stream().forEach(System.out::println);
-		
-		//Ejer. 9) obtener un mapa con los alumnos aprobados y suspendidos
-		
-		
-		//Ejer. 10) obtener un mapa con las notas medias de los alumnos de los distintos paises
-		
-		
-		//Ejer. 11) inprimir estadisticas de la asignatura: la nota maxima, minima y media.
-		
-			
-		//Ejer. 12 obtener la lista de alumnos agrupados por paises en un mapa
-		
-		
-		//Ejer. 12.1 obtener un mapa con la nota media de los alumnos de cada pais
-				
-				
-		//Ejer. 12.2 obtener un mapa con el alumno que ha obtenido la nota mas alta de cada pais
 
+		System.out.println("\n===EJERCICIO "+ index++ +"===");
+		//Ejer. 9) obtener un mapa con los alumnos aprobados y suspendidos
+		ing.obtenerAprobadosSuspendidos().entrySet().forEach(entry->System.out.println(entry.getValue() + " " + entry.getKey()));
+
+		System.out.println("\n===EJERCICIO "+ index++ +"===");
+		//Ejer. 10) obtener un mapa con las notas medias de los alumnos de los distintos paises
+		ing.obtenerNotasMediasPorPais().entrySet().forEach(entry->System.out.println(entry.getKey()+" "+entry.getValue()));
+		
+		System.out.println("\n===EJERCICIO "+ index++ +"===");
+		//Ejer. 11) inprimir estadisticas de la asignatura: la nota maxima, minima y media.
+		ing.imprimirEstadisticasAlumnos();
+		
+		System.out.println("\n===EJERCICIO "+ index++ +"===");
+		//Ejer. 12) obtener la lista de alumnos agrupados por paises en un mapa
+		ing.obtenerAlumnosPorPais().entrySet().forEach(entry->System.out.println(entry.getKey()+" "+entry.getValue()));
+		
+		System.out.println("\n===EJERCICIO "+ index++ +"===");
+		//Ejer. 13) obtener un mapa con la nota media de los alumnos de cada pais
+		ing.obtenerNotaMediaPorPais().entrySet().forEach(entry->System.out.println(entry.getKey()+" "+entry.getValue()));
 				
-		//Ejer. 12.3 obtener un mapa con la nota mas alta de cada pais
-			
+		System.out.println("\n===EJERCICIO "+ index++ +"===");		
+		//Ejer. 14) obtener un mapa con el alumno que ha obtenido la nota mas alta de cada pais
+		ing.obtenerAlumnoConNotaMaxPorPais().entrySet().forEach(entry->System.out.println(entry.getKey()+" "+entry.getValue()));
+
+		System.out.println("\n===EJERCICIO "+ index +"===");		
+		//Ejer. 15) obtener un mapa con la nota mas alta de cada pais
+		ing.obtenerNotaMaxPorPais().entrySet().forEach(entry->System.out.println(entry.getKey()+" "+entry.getValue()));
+
 	}
 
 }

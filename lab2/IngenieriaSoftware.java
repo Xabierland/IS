@@ -1,9 +1,11 @@
+import java.lang.StackWalker.Option;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.DoubleSummaryStatistics;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.*;
 
 public class IngenieriaSoftware {
@@ -71,5 +73,41 @@ public class IngenieriaSoftware {
 	public List<Alumno> obtenerAlumnosQueSuperanNotasEnEntregable()
 	{
 		return lMatriculados.stream().filter(Alumno::superaNotaEnEntregable).collect(Collectors.toList());
+	}
+
+	public Map<Boolean,List<Alumno>> obtenerAprobadosSuspendidos()
+	{
+		return lMatriculados.stream().collect(Collectors.partitioningBy(Alumno::haSuspendido));
+	}
+
+	public Map<String,Double> obtenerNotasMediasPorPais()
+	{
+		return lMatriculados.stream().collect(Collectors.groupingBy(Alumno::getPais, Collectors.averagingDouble(Alumno::calcularNotaFinalJava8)));
+	} 
+
+	public void imprimirEstadisticasAlumnos()
+	{
+		DoubleSummaryStatistics st = lMatriculados.stream().mapToDouble(Alumno::calcularNotaFinalJava8).summaryStatistics();
+		System.out.println("Estadistica:\n\tMax: "+st.getMax()+"\n\tMin: "+st.getMin()+"\n\tMedia: "+st.getAverage());
+	}
+
+	public Map<String, List<Alumno>> obtenerAlumnosPorPais()
+	{
+		return lMatriculados.stream().collect(Collectors.groupingBy(Alumno::getPais));
+	}
+
+	public Map<String, Double> obtenerNotaMediaPorPais()
+	{
+		return lMatriculados.stream().collect(Collectors.groupingBy(Alumno::getPais, Collectors.averagingDouble(Alumno::calcularNotaFinalJava8)));
+	}
+
+	public Map<String, Alumno> obtenerAlumnoConNotaMaxPorPais()
+	{
+		return lMatriculados.stream().collect(Collectors.groupingBy(Alumno::getPais, Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparing(Alumno::calcularNotaFinalJava8)),Optional::get)));
+	}
+
+	public Map<String,Double> obtenerNotaMaxPorPais()
+	{
+		return lMatriculados.stream().collect(Collectors.groupingBy(Alumno::getPais, Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparing(Alumno::calcularNotaFinalJava8)), p->p.get().calcularNotaFinalJava8())));
 	}
 }

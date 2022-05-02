@@ -1,4 +1,4 @@
-package lab3;
+package src.lab3;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
