@@ -1,7 +1,5 @@
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collector;
 
 public class Articulo {
     private String titulo;
@@ -13,34 +11,13 @@ public class Articulo {
     {
         titulo=pTitulo;
         fichero=pFichero;
-        listaTemas=new ArrayList<>();
         listaAutores=new ArrayList<>();
+        listaTemas=new ArrayList<>();
     }
 
-    public String toString()
+    public void addTemas(String pTema)
     {
-        return "Titulo: "+titulo+", Fichero: "+fichero;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getFichero() {
-        return fichero;
-    }
-
-    public void setFichero(String fichero) {
-        this.fichero = fichero;
-    }
-
-    public void addTemas(String pTemas)
-    {
-        listaTemas.add(pTemas);
+        listaTemas.add(pTema);
     }
 
     public void addAutor(Autor pAutor)
@@ -48,42 +25,35 @@ public class Articulo {
         listaAutores.add(pAutor);
     }
 
-    public int contarNacionalidadesDistintas()
+    public String toString()
     {
-        return (int) listaAutores.stream().map(Autor::getNacionaldiad).distinct().count();
+        return "\tTitulo: "+titulo;
     }
 
-    public double mediaEdadAutores()
+    public int numeroNacionalidades()
     {
-        return listaAutores.stream().mapToInt(Autor::getEdad).average().getAsDouble();
+        return (int) listaAutores.stream().map(Autor::getNacionalidad).distinct().count();
     }
 
-    public boolean unicoAutor()
+    public int sumaEdades()
     {
-        if(listaAutores.size()<=1)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return (int) listaAutores.stream().mapToInt(Autor::getEdad).sum();
     }
 
     public boolean contieneTema(String pTema)
     {
         return listaTemas.contains(pTema);
     }
-
-    public int numTemas()
+    public int numeroTemas()
     {
         return listaTemas.size();
     }
-
-    public List<RevisorAutomatico> obtPosibleRevisores()
+    public boolean unAutor()
     {
-        RevisoresAutomaticos r=RevisoresAutomaticos.gRevisoresAutomaticos();
-        return r.obtPosiblesRevisores(this);
+        return listaAutores.size()==1;
     }
-    
+
+    public List<RevisorAutomatico> obtPosibleRevisores() {
+        return RevisoresAutomaticos.gRevisoresAutomaticos().revisorDeArticulo(this);
+    }
 }

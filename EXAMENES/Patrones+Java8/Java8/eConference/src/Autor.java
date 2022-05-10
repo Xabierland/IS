@@ -1,29 +1,29 @@
+
 public class Autor {
     private String nombre;
-    private String nacionaldiad;
-    
-
+    private String nacionalidad;
     private String universidad;
     private int edad;
 
-    public Autor(String pNombre, String pNacion, String pUniversidad, int pEdad)
+    public Autor(String pNombre, String pNacionalidad, String pUniversidad, int pEdad)
     {
-        nombre=pNombre;
-        nacionaldiad=pNacion;
-        universidad=pUniversidad;
-        edad=pEdad;
+        nombre=pNombre;nacionalidad=pNacionalidad;universidad=pUniversidad;edad=pEdad;
+    }
+
+    public String getNombre() {
+        return nombre;
     }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public String getNacionaldiad() {
-        return nacionaldiad;
+    public String getNacionalidad() {
+        return nacionalidad;
     }
 
-    public void setNacionaldiad(String nacionaldiad) {
-        this.nacionaldiad = nacionaldiad;
+    public void setNacionalidad(String nacionalidad) {
+        this.nacionalidad = nacionalidad;
     }
 
     public String getUniversidad() {
@@ -42,8 +42,5 @@ public class Autor {
         this.edad = edad;
     }
 
-    public String toString()
-    {
-        return ("Nombre: "+nombre+", Nacionalidad: "+nacionaldiad+", Universidad: "+universidad+", Edad: "+edad);
-    }
+    
 }

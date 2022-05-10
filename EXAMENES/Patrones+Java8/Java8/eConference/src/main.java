@@ -30,7 +30,7 @@ public class main {
         ar4.addTemas("Tema1");ar4.addTemas("Tema2");ar4.addTemas("Tema3");
 
         ////////////////////////////ARTICULO_RECIBIDO//////////////////////////////////
-        ArticulosRecibidos la=ArticulosRecibidos.gArticulosRecibidos();
+        ArticulosRecibidos la=ArticulosRecibidos.getArticulosRecibidos();
         la.addArticulo(ar1);la.addArticulo(ar2);la.addArticulo(ar3);la.addArticulo(ar4);
 
         ///////////////////////////////REVISOR_AUTOMATICO/////////////////////////////
@@ -42,7 +42,9 @@ public class main {
         r3=new RevisorAutomatico("3");
         r3.addTemas("Tema1");r3.addTemas("Tema2");r3.addTemas("Tema3");
 
-
+        /////////////////////////////REVISORES_AUTOMATICOS//////////////////////////////
+        RevisoresAutomaticos ra=RevisoresAutomaticos.gRevisoresAutomaticos();
+        ra.addRevisores(r1);ra.addRevisores(r2);ra.addRevisores(r3);
 
 
         //////////////////////////////////////////////////////////////////
@@ -55,15 +57,33 @@ public class main {
         la.ordenadosPorNacionalidadesDistintasYEdad().forEach(System.out::println);
         //3
         printCabecera();
-        System.out.println(r1.obtPorcentajeTemasExperto(ar1));
-        System.out.println(r1.obtPorcentajeTemasExperto(ar2));
-        System.out.println(r1.obtPorcentajeTemasExperto(ar3));
-        System.out.println(r1.obtPorcentajeTemasExperto(ar4));
+        System.out.println("Revisor 1");
+        System.out.println("\t"+r1.obtPorcentajeTemasExperto(ar1));
+        System.out.println("\t"+r1.obtPorcentajeTemasExperto(ar2));
+        System.out.println("\t"+r1.obtPorcentajeTemasExperto(ar3));
+        System.out.println("\t"+r1.obtPorcentajeTemasExperto(ar4));
+        System.out.println("Revisor 2");
+        System.out.println("\t"+r2.obtPorcentajeTemasExperto(ar1));
+        System.out.println("\t"+r2.obtPorcentajeTemasExperto(ar2));
+        System.out.println("\t"+r2.obtPorcentajeTemasExperto(ar3));
+        System.out.println("\t"+r2.obtPorcentajeTemasExperto(ar4));
+        System.out.println("Revisor 3");
+        System.out.println("\t"+r3.obtPorcentajeTemasExperto(ar1));
+        System.out.println("\t"+r3.obtPorcentajeTemasExperto(ar2));
+        System.out.println("\t"+r3.obtPorcentajeTemasExperto(ar3));
+        System.out.println("\t"+r3.obtPorcentajeTemasExperto(ar4));
         //4
         printCabecera();
+        System.out.println("Articulo 1");
+        ar1.obtPosibleRevisores().forEach(System.out::println);
+        System.out.println("Articulo 2");
+        ar2.obtPosibleRevisores().forEach(System.out::println);
+        System.out.println("Articulo 3");
         ar3.obtPosibleRevisores().forEach(System.out::println);
+        System.out.println("Articulo 4");
+        ar4.obtPosibleRevisores().forEach(System.out::println);
         //5
         printCabecera();
-        la.getNumPublicacionesAutorSoloYVarios().entrySet().forEach(entry -> System.out.println(entry.getKey()+": "+entry.getValue()));
+        la.getNumPublicacionesAutorSoloYVarios().entrySet().forEach(entry -> System.out.println("\t"+entry.getKey()+": "+entry.getValue()));
     }
 }
