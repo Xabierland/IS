@@ -36,11 +36,11 @@ public class main {
         o5=new Oferta(e3, e4);
         //CATALOGO
         CatalogoOfertas co = CatalogoOfertas.getCatalogoOfertas();
-        co.addOfertas(o1);
-        co.addOfertas(o2);
-        co.addOfertas(o3);
-        co.addOfertas(o4);
-        co.addOfertas(o5);
+        co.addOferta(o1);
+        co.addOferta(o2);
+        co.addOferta(o3);
+        co.addOferta(o4);
+        co.addOferta(o5);
 
 
         //PRUEBAS
@@ -64,9 +64,9 @@ public class main {
         co.buscarOfertas("Bilbao", "Orduña").forEach(System.out::println);
         //7
         printEjercicio();
-        co.getOfertaMinEstacionesPorOrigen().entrySet().forEach(entry->System.out.println(entry.getKey()+": "+entry.getValue()));
+        co.getOfertaMinEstacionesPorOrigen().entrySet().forEach(entry->System.out.println("\t"+entry.getKey()+": "+entry.getValue()));
         //8
         printEjercicio();
-        co.getMinEstacionesPorOrigen().entrySet().forEach(entry->System.out.println(entry.getKey()+": "+entry.getValue()));
+        co.getMinEstacionesPorOrigen().entrySet().forEach(entry->System.out.println("\t"+entry.getKey()+": "+entry.getValue()));
     }
 }
